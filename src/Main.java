@@ -6,20 +6,76 @@ DateTimeFormatter[] dtf = new  DateTimeFormatter[]{
 void main() {
 
     try{
-        Student[] students = inputStudentArray();
-
-        printStudentArray(students);
-
-        System.out.println("DONE");
+//        Student[] students = inputStudentArray();
+//
+//        printStudentArray(students);
+//
+//        System.out.println("DONE");
+//        caculateSum();
+//        caculateSumVer2();
+        doExeriseRegex01();
     }catch(Exception e){
+
         System.out.println(e.getMessage());
     }
-
-
-
     scanner.close();
 }
 
+private void doExeriseRegex01() {
+    String[] input = new  String[] {
+            "I am learning Java",
+            "JAVASCRIPT is different",
+            "I like javascript"
+    };
+    String regex = "^.*java.*$";
+    Pattern pettern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+    Matcher matcher;
+
+    for(String item : input) {
+        matcher = pettern.matcher(item);
+        if(matcher.find()) {
+            System.out.println(matcher.group());
+        }
+    }
+}
+
+private void caculateSumVer2() {
+    //khong dung ArrayList
+    int total = 0;
+    while(true) {
+        System.out.print("Nhập số: ");
+        total += scanner.nextInt();
+        System.out.print("Bạn có muốn nhập tiếp (Y/N): ");
+        char choice = scanner.next().toLowerCase().charAt(0);
+        if(choice !='y') {
+            break;
+        }
+    }
+    System.out.println("Tổng = "+ total);
+}
+private void caculateSum() {
+    //Sử duụng ArrayList
+
+    ArrayList<Integer> numbers = new ArrayList<>();
+    while(true) {
+        System.out.print("Nhập số: ");
+        int value = scanner.nextInt();
+        numbers.add(value);
+        System.out.print("Bạn có muốn nhập tiếp (Y/N): ");
+        char choice = scanner.next().toLowerCase().charAt(0);
+        if(choice != 'y') {
+            break;
+        }
+    }
+    int result = 0;
+    System.out.println("Tổng của");
+    for(int item : numbers) {
+        result += item;
+        System.out.print(" " + item);
+    }
+    System.out.println("= " + result);
+
+}
 private void printStudentArray(Student[] students){
     try{
         System.out.println("In danh sách sinh viên....");
