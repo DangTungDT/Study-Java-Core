@@ -13,14 +13,31 @@ void main() {
 //        System.out.println("DONE");
 //        caculateSum();
 //        caculateSumVer2();
-        doExeriseRegex01();
+        doExeriseRagex02();
     }catch(Exception e){
 
         System.out.println(e.getMessage());
     }
     scanner.close();
 }
+private void doExeriseRagex02() {
+    String[] input = new  String[] {
+            "I am learning Java",
+            "JAVASCRIPT is different",
+            "I like javascript",
+            "java"
+    };
 
+    String regex = "^java$";
+    Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+    Matcher matcher;
+    for(String item : input) {
+        matcher = pattern.matcher(item);
+        if(matcher.find()) {
+            System.out.println(matcher.group());
+        }
+    }
+}
 private void doExeriseRegex01() {
     String[] input = new  String[] {
             "I am learning Java",
