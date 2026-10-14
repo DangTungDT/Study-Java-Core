@@ -13,12 +13,29 @@ void main() {
 //        System.out.println("DONE");
 //        caculateSum();
 //        caculateSumVer2();
-        doExeriseRagex02();
+        int[] input = new int[]{
+          1, 2, 3, 4, 5, 6, 8, 10, 11, 12, 13, 14, 15, 16
+        };
+        for(int item : input ) {
+            if(kiemTraSoNguyenTo(item)){
+                System.out.println(item );
+            }
+        }
     }catch(Exception e){
 
         System.out.println(e.getMessage());
     }
     scanner.close();
+}
+
+private boolean kiemTraSoNguyenTo(int number) {
+    if(number < 2) return false;
+    for(int i = 2; i<= number/2;i++ ){
+        if(number % i == 0){
+            return false;
+        }
+    }
+    return true;
 }
 private void doExeriseRagex02() {
     String[] input = new  String[] {
