@@ -1,9 +1,9 @@
 public class FullTimeEmployee extends Employee{
 
     public FullTimeEmployee(String name){
-        this.name = name;
+        super(name);
     }
     public void calculateSalary() {
-        System.out.println("Full time salary!");
+        System.out.println("Full time salary!" + " name: " + getName());
     }
 }

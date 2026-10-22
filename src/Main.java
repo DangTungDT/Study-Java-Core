@@ -13,11 +13,9 @@ void main() {
     listEmployee.add(new FullTimeEmployee("D"));
     listEmployee.add(new PartTimeEmployee("E"));
     listEmployee.add(new FullTimeEmployee("F"));
-
      for(Employee item : listEmployee) {
          item.calculateSalary();
      }
-
 
     scanner.close();
 }
