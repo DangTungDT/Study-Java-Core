@@ -32,30 +32,49 @@ void main() {
 //        System.out.println(ex.getMessage());
 //    }
 
-//    System.out.print("Enter name: ");
-//    String name = scanner.nextLine(); //
-//
-//    System.out.print("Enter old: ");
-//    int old = Integer.parseInt(scanner.nextLine());
-//    System.out.print("Enter school name: ");
-//    String schoolName = scanner.nextLine();
-//
-//    System.out.println("-------------------------");
-//    System.out.println(name);
-//    System.out.println(old);
-//    System.out.println(schoolName);
+     List<BankAccount> listAccount = new ArrayList<BankAccount>();
 
-    List<BankAccount> listAccount = new ArrayList<BankAccount>();
-    //listAccount.add(new CheckingAccount("Dang Tung", 100, 100));
-    listAccount.add(new SavingsAccount("Do Quyen", 100));
-    for(BankAccount item : listAccount) {
-        System.out.println("Account holder: " + item.getHolder());
-        System.out.println("rut 110: " + item.withdraw(110));
-        System.out.println("gui 200: " + item.deposit(200));
-        System.out.println("Balance: " + item.getBalance());
-
+    while(true) {
+        listAccount.add(createBankAccount());
+        System.out.print("Press T/t to continue creating an account: ");
+        String input = scanner.nextLine().trim();
+        if(input.isEmpty()){
+            break;
+        }
+        if(input.toLowerCase().charAt(0) != 't'){
+            break;
+        }
     }
 
-
+    System.out.println("List of created account: ");
+    for(BankAccount account : listAccount) {
+         account.print();
+    }
     scanner.close();
+}
+
+BankAccount createBankAccount() {
+    int typeAccount = -1;
+    System.out.print("Enter your name: ");
+    String nameHolder = scanner.nextLine().trim();
+    System.out.println("1. CheckingAccount\n2. SavingAccount");
+
+     while(true) {
+         System.out.print("Choose an account type (1 or 2): ");
+         typeAccount = Integer.parseInt(scanner.nextLine());
+         if(typeAccount == 1) {
+             System.out.println("You have selected a checking account");
+             System.out.print("Enter balance limit: ");
+             double limit = Double.parseDouble(scanner.nextLine());
+
+             CheckingAccount account = new CheckingAccount(nameHolder, 0,limit);
+             return account;
+         }else if(typeAccount == 2) {
+             System.out.println("You have selected a saving account");
+             SavingsAccount account = new SavingsAccount(nameHolder, 0);
+             return account;
+         }else{
+             System.out.println("Choose an type account failed!");
+         }
+     }
 }

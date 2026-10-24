@@ -1,15 +1,16 @@
 import java.util.Objects;
 
 public abstract class BankAccount {
-    private static  int id = 0;
+    private  int id = 0;
     private String holder;
     private double balance;
-
+    private static int accountCount = 0;
     public BankAccount(String holder, double balance) {
          isValidHolder(holder);
          this.holder = holder;
          this.balance = balance;
-         id++;
+         accountCount++;
+         id = accountCount;
     }
 
     public int getId() {
@@ -40,5 +41,9 @@ public abstract class BankAccount {
         if(name == null || name.isBlank()) {
             throw new IllegalArgumentException("Name is null or empty!");
         }
+    }
+
+    public void print() {
+        System.out.println("id:" + id + "\tholder: " +holder + "\tbalance: " +balance);
     }
 }

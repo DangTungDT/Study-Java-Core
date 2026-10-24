@@ -15,6 +15,12 @@ public class CheckingAccount extends BankAccount{
      public void setLimit(double limit) {
         balanceLimit = limit;
      }
+
+     @Override
+     public void print() {
+         System.out.println("id:" + getId() + "\tholder: " +getHolder() + "\tbalance: " +getBalance() + "\tlimit: " + balanceLimit);
+     }
+
     @Override
     public Boolean deposit(double depositAmount) {
         try{
