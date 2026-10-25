@@ -47,9 +47,39 @@ void main() {
     }
 
     System.out.println("List of created account: ");
+    int i = 0;
     for(BankAccount account : listAccount) {
-         account.print();
+        System.out.println("Account " +(i+1) + ": " + account.print());
+        i++;
     }
+    while(true){
+        System.out.print("Choose an account: ");
+        int selectedNumberAccount = Integer.parseInt(scanner.nextLine().trim()) -1;
+        System.out.print("1.deposit\n2.withdraw\nChoose action: ");
+        int action = Integer.parseInt(scanner.nextLine().trim());
+        if(action == 1) {
+            System.out.print("Enter the deposit amount: ");
+            double depositAmount = scanner.nextDouble();
+            if(listAccount.get(selectedNumberAccount).deposit(depositAmount)){
+                System.out.println("Deposit successful");
+                System.out.println(listAccount.get(selectedNumberAccount).print());
+                break;
+            }else{
+                System.out.println("Deposit failed");
+            }
+        }else{
+            System.out.print("Enter the withdraw amount: ");
+            double depositAmount = scanner.nextDouble();
+            if(listAccount.get(selectedNumberAccount).withdraw(depositAmount)){
+                System.out.println("Withdraw successful");
+                System.out.println(listAccount.get(selectedNumberAccount).print());
+                break;
+            }else{
+                System.out.println("Withdraw failed");
+            }
+        }
+    }
+
     scanner.close();
 }
 

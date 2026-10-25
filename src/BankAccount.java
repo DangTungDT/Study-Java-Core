@@ -43,7 +43,7 @@ public abstract class BankAccount {
         }
     }
 
-    public void print() {
-        System.out.println("id:" + id + "\tholder: " +holder + "\tbalance: " +balance);
+    public String print() {
+        return "id:" + id + "\tholder: " +holder + "\tbalance: " +balance;
     }
 }

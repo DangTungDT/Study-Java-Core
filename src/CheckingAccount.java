@@ -17,8 +17,8 @@ public class CheckingAccount extends BankAccount{
      }
 
      @Override
-     public void print() {
-         System.out.println("id:" + getId() + "\tholder: " +getHolder() + "\tbalance: " +getBalance() + "\tlimit: " + balanceLimit);
+     public String print() {
+         return "id:" + getId() + "\tholder: " +getHolder() + "\tbalance: " +getBalance() + "\tlimit: " + balanceLimit;
      }
 
     @Override
